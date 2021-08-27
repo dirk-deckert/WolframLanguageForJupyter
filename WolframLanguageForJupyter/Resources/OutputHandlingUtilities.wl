@@ -267,18 +267,18 @@ If[
 				Head[result] === Manipulate,
 				preprocessedForm = result;
 				,
-				preprocessedForm = Rasterize[result];
+				preprocessedForm = result;
 			];
 			(* if the preprocessing failed, return $Failed *)
 			If[
 				FailureQ[preprocessedForm],
 				Return[$Failed];
 			];
-			(* now return preprocessedForm as a byte array corresponding to the PNG format *)
+			(* now return preprocessedForm as a byte array corresponding to the SVG format *)
 			Return[
 				ExportByteArray[
 					preprocessedForm,
-					"PNG"
+					"SVG"
 				]
 			];
 		];
@@ -332,8 +332,8 @@ If[
 			(* return HTML for the rasterized form of result *)
 			Return[
 				StringJoin[
-					(* display a inlined PNG image encoded in base64 *)
-					"<img alt=\"Output\" src=\"data:image/png;base64,",
+					(* display a inlined SVG image encoded in base64 *)
+					"<img alt=\"Output\" style=\"background:white;\" src=\"data:image/svg+xml;base64,",
 					(* the rasterized form of the result, converted to base64 *)
 					imageInBase64,
 					(* end the element *)

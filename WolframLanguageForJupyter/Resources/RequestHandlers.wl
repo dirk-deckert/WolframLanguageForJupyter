@@ -255,10 +255,10 @@ If[
 								{
 									"text/html" ->
 										StringJoin[
-											(* display any generated messages as inlined PNG images encoded in base64 *)
-											"<div><img alt=\"\" src=\"data:image/png;base64,", 
+											(* display any generated messages as inlined SVG images encoded in base64 *)
+											"<div><img alt=\"\" style=\"background:white;\" src=\"data:image/svg+xml;base64,", 
 											(* rasterize the generated messages in a dark red color, and convert the resulting image to base64*)
-											BaseEncode[ExportByteArray[Rasterize[Style[totalResult["GeneratedMessages"], Darker[Red]]], "PNG"]],
+											BaseEncode[ExportByteArray[Style[totalResult["GeneratedMessages"], Darker[Red]], "SVG"]],
 											(* end image element *)
 											"\">",
 											(* embed the cloud object *)
